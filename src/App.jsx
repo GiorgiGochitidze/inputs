@@ -6,6 +6,7 @@ function App() {
   const [input2, setInput2] = useState('');
   const [divs, setDivs] = useState([]);
   const [message, setMessage] = useState(false);
+  const [idCounter, setIdCounter] = useState(0);
   const divsRef = useRef([]);
 
   const handleCreateDiv = (e) => {
