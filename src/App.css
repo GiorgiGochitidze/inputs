@@ -1,0 +1,82 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+.container{
+  width: 100%;
+  height: 723px;
+  background: linear-gradient(45deg, rgb(241, 241, 3), lawngreen);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputs-container{
+  width: 90%;
+  height: 150px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+#name{
+  width: 200px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid lawngreen;
+  margin-inline: 10px;
+  padding-inline: 5px;
+}
+
+#name:focus{
+  outline: none;
+}
+
+#lastname{
+  width: 200px;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid lawngreen;
+  margin-inline: 10px;
+  padding-inline: 5px;
+}
+
+#lastname:focus{
+  outline: none;
+}
+
+.submit-btn{
+  width: 200px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid lawngreen;
+  background: transparent;
+  transition: background 0.5s;
+}
+
+.submit-btn:hover{
+  cursor: pointer;
+  background: lawngreen;
+  color: white;
+}
+
+.delete-cards{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid lawngreen;
+  transition: background 0.3s;
+}
+
+.delete-cards:hover{
+  cursor: pointer;
+  background: lawngreen;
+  color: white;
+}
