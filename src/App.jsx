@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
   const [input2, setInput2] = useState('');
   const [divs, setDivs] = useState([]);
   const [message, setMessage] = useState(false);
-  const [idCounter, setIdCounter] = useState(0);
+  const divsRef = useRef([]);
 
   const handleCreateDiv = (e) => {
     e.preventDefault();
@@ -32,7 +32,8 @@ function App() {
   };
 
   const handleDeleteDiv = (id) => {
-    setDivs(prevDivs => prevDivs.filter((item) => item.id !== id));
+    divsRef.current = divsRef.current.filter((item) => item.id !== id);
+    setDivs(divsRef.current);
   };
 
   return (
