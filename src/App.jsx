@@ -1,37 +1,39 @@
-import { useState } from 'react'
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [input1, setInput1] = useState('')
-  const [input2, setInput2] = useState('')
-  const [divs, setDivs] = useState([])
-  const [message, setMessage] = useState(false)
+  const [input1, setInput1] = useState('');
+  const [input2, setInput2] = useState('');
+  const [divs, setDivs] = useState([]);
+  const [message, setMessage] = useState(false);
+  const [idCounter, setIdCounter] = useState(0);
 
   const handleCreateDiv = (e) => {
     e.preventDefault();
 
     if (input1 === '' || input2 === '') {
-      setMessage(true)
-      return; // Abort the function if inputs are empty
+      setMessage(true);
+      return;
     }
 
     const newDiv = {
+      id: idCounter,
       background: 'white',
       input1,
       input2
-    }
+    };
 
-    setDivs(divs => [...divs, newDiv])
-    setInput1('')
-    setInput2('')
-    setMessage(false)
-  }
+    setDivs([...divs, newDiv]);
+    setInput1('');
+    setInput2('');
+    setMessage(false);
 
-  const handleDeleteDiv = (index) => {
-    let newDivs = [...divs]
-    newDivs.splice(index, 1)
-    setDivs(newDivs)
-  }
+    setIdCounter(idCounter => idCounter + 1);
+  };
+
+  const handleDeleteDiv = (id) => {
+    setDivs(prevDivs => prevDivs.filter((item) => item.id !== id));
+  };
 
   return (
     <div className="container">
@@ -47,10 +49,10 @@ function App() {
         </div>
         {message && <h3 style={{ marginTop: '10px' }}>Please write your firstname and lastname</h3>}
       </form>
-      <div style={{width: '100%', height: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        {divs.map((div, index) => (
+      <div style={{ width: '100%', height: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+        {divs.map((div) => (
           <div
-            key={index}
+            key={div.id}
             style={{
               width: '90%',
               height: '70px',
@@ -65,18 +67,18 @@ function App() {
           >
             <div style={{ display: 'flex' }}>
               <h3>First Name:</h3>
-              <h3 style={{marginInline: '10px'}}>{div.input1};</h3>
+              <h3 style={{ marginInline: '10px' }}>{div.input1}</h3>
 
               <h3>Last Name:</h3>
-              <h3 style={{marginInline: '10px'}}>{div.input2};</h3>
+              <h3 style={{ marginInline: '10px' }}>{div.input2}</h3>
             </div>
 
-            <button onClick={() => handleDeleteDiv(index)} className='delete-cards'>X</button>
+            <button onClick={() => handleDeleteDiv(div.id)} className='delete-cards'>X</button>
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
