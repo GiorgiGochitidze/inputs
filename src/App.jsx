@@ -33,10 +33,10 @@ function App() {
   };
 
   const handleDeleteDiv = (id) => {
-    divsRef.current = divsRef.current.filter((item) => item.id !== id);
-    setDivs(divsRef.current);
+    const updatedDivs = divs.filter((div) => div.id !== id);
+    setDivs(updatedDivs);
   };
-
+  
   return (
     <div className="container">
       <form className='inputs-container'>
